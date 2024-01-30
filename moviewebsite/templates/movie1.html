@@ -1,0 +1,27 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/movie.css' %}">
+</head>
+<div class="top">
+	<div class="columns">
+		<div class="column is-full featured_wrapper p-0">
+			<img src="{{ product.image.url }}" class="featured">
+			<div class="title_wrapper">
+				<span class="has-text-white">Trending Today</span>
+				<h1 class="title is-1 has-text-white">The Untold Story of the great Lorem Ipsum</h1>
+				<button class="button is-medium">Watch It Now</button>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container text-center" >
+	<div class="columns is-multiline p-0 pt-6 last">
+		<div class="column is-full">
+			<p class="has-text-white">Action Movies Collection</p>
+		</div>
+		<div class="column is-one-quarter text-center">
+			<img src="{{ product.image.url }}" style="height: 100px;width: 100px">
+		</div>
+	</div>
+	</div>
+</div>

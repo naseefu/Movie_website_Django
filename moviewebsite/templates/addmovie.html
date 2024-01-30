@@ -1,0 +1,102 @@
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <style>
+        body{
+            background-image: url("{% static 'img/movie_bg.jpg' %}");
+            background-size: cover;
+        }
+    </style>
+</head>
+<section class="background-radial-gradient overflow-hidden">
+<br><br>
+    <br>
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5" style="justify-content: center">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10;margin-top: -390px">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+          Xpain movies <br />
+          <span style="color: hsl(218, 81%, 75%)">A complete movie website</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+          Welcome to the ultimate destination for cinephiles! Explore a world of captivating stories, thrilling adventures, and timeless classics. Unleash your imagination as you journey through the magic of cinema.
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass" style="width: 500px; margin-top: -150px">
+          <div class="card-body px-4 py-5 px-md-5">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="text-center" style="font-weight: bold; font-size: 20px;"><strong>Add movie</strong></p>
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                  <div class="form-outline mb-2">
+                <input type="text" id="form3Example4" class="form-control" name="username" value="{{ user.username }}" readonly/>
+                <label class="form-label" for="form3Example4">Username</label>
+              </div>
+
+              <div class="form-outline mb-2">
+                <input type="text" id="form3Example4" class="form-control" name="name" />
+                <label class="form-label" for="form3Example4">Movie name</label>
+              </div>
+              </div>
+                <div class="form-outline mb-2">
+
+                <select id="category" name="category" class="form-control">
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+                <label class="form-label" for="form3Example4">Category</label>
+
+              </div>
+                <div class="form-outline mb-2">
+                <input type="text" id="form3Example4" class="form-control" name="actors" />
+                <label class="form-label" for="form3Example4">Actors</label>
+              </div>
+                <div class="form-outline mb-2">
+                <input type="text" id="form3Example4" class="form-control" name="description" />
+                <label class="form-label" for="form3Example4">Description</label>
+              </div>
+                <div class="form-outline mb-4">
+                <input type="file" name="image" />
+              </div>
+                <div class="form-outline mb-2">
+                <input type="date" id="form3Example4" class="form-control" name="date" />
+                <label class="form-label" for="form3Example4">Date</label>
+              </div>
+                <div class="form-outline mb-2">
+                <input type="text" id="form3Example4" class="form-control" name="ytlink" />
+                <label class="form-label" for="form3Example4">Youtube Link</label>
+              </div>
+              <!-- Password input -->
+                <div class="bt1">
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-2  text-center">
+                Add movie
+              </button><br>
+OR
+                </div>
+                  <div>
+                      </div>
+            </form>
+
+          <a href="{% url 'movieapp:home' %}" ><button class="btn btn-primary btn-block mb-2  text-center">
+                Home
+          </button></a>
+
+              <!-- Register buttons -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

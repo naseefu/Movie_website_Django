@@ -1,0 +1,135 @@
+
+body{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+            flex: 1;
+}
+
+.nav-item{
+    letter-spacing: .2em;
+    font-size: 14px;
+    text-transform: uppercase;
+
+}
+
+.dropdown-item{
+    letter-spacing: .2em;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.my_footer{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.my_footer p{
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+/*category page*/
+.my_row_class{
+    padding-top: 15px;
+}
+.my_row_class .mx-auto{
+    color: black;
+}
+.my_image{
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+}
+.my_title{
+    font-size: 25px;
+    text-transform: uppercase;
+    letter-spacing:.2em;
+    font-weight: bold;
+    padding: 30px;
+}
+.my_image_padding{
+    padding: 5px;
+}
+
+/*category product description*/
+
+.product_para{
+    font-size: 18px;
+    text-align: justify;
+}
+
+.my_bottom_margin{
+    margin-bottom: 10px;
+}
+
+.card-body h4{
+     font-size: 14px;
+     text-transform: uppercase;
+    letter-spacing: .2em;
+}
+
+/*product page*/
+
+.my_prod_row_class{
+    padding-top: 15px;
+    padding-bottom: 25px;
+}
+
+.my_prod_row_class .mx-auto{
+    color: black;
+    font-size: 12px;
+    text-decoration: none;
+
+}
+
+.my_prod_title{
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    padding-top: 15px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+.prod_stock{
+
+}
+
+.my_search_text{
+    padding-top:20px ;
+}
+
+/*Cart page*/
+
+.my_custom_table{
+    min-width: 400px;
+    font-size: 14px;
+}
+
+.my_custom_thead{
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    background-color: #f8f9fa!important;
+}
+
+.custom_a{
+    text-decoration: none;
+}
+
+.custom_icon{
+    text-decoration: none;
+    color: #868e96!important;
+}
+
+.my_custom_button{
+    margin-top: 5px;
+}

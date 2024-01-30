@@ -1,0 +1,112 @@
+{% load static %}
+<head>
+{% block title %}
+    {% if category %}
+        {{ product.name }} - XPAIN SHOPPE
+    {% endif %}
+{% endblock %}
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" href="{% static 'css/eachmovie.css' %}">
+{#<link rel="stylesheet" href="{% static 'css/movie.css' %}">#}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+    body{
+        background-image: url("{% static 'img/movie_bg.jpg' %}");
+        background-size: cover;
+        backdrop-filter: opacity(0.5);
+        backdrop-filter: brightness(30%);
+
+    }
+    button {
+	background: #f40612 !important;
+	color: #fff !important;
+	font-size: 18px;
+	padding: 0.5rem 3rem;
+	outline: none;
+	border: 0 !important;
+}
+</style>
+</head>
+{% block content %}
+    <nav class="navbar navbar-expand-lg" style="padding: 20px;color: white">
+  <a class="navbar-brand" style="font-weight: bold;font-size: 20px;color: revert">Xpain movies</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'movieapp:home' %}" style="color: white">Home <span class="sr-only"></span></a>
+      </li>
+      {% if user.is_authenticated %}
+          <a href="{% url 'movieapp:profile' %}" style="text-decoration: none;color: red" ><li class="nav-link" style="color: red;font-size: 14px">{{ user.username }}</li></a>
+            <li class="nav-link"><a href="{% url 'credentials:logout' %}" style="text-decoration: none;color: white">Logout</a></li>
+        {% else %}
+            <li class="nav-link"><a href="{% url 'credentials:register' %}" style="text-decoration: none;color: white">Register</a></li>
+            <li class="nav-link"><a href="{% url 'credentials:login' %}" style="text-decoration: none;color: white">Login</a></li>
+        {% endif %}
+      <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+            Movies
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a href="{% url 'movieapp:home' %}" class="dropdown-item">All Movies</a></li>
+            <li>{% for link in links %}
+            <li><a href="{{ link.get_url }}" class="dropdown-item">{{ link.name }}</a>
+            {% endfor %}</li>
+          </ul>
+        </li>
+    </ul>
+
+  </div>
+</nav>
+    <div class="row my_prod_row_class" style="padding: 20px">
+{#        <div class="mx-auto" style="text-align: end">#}
+{#            <p><a href="{% url 'movieapp:home' %}" style="text-decoration: none;font-size: 14px">HOME</a> | <a href="{% url 'movieapp:movie_by_category' product.category.slug %}" style="text-decoration: none;font-size: 14px" >{{ product.category }}</a>  </p>#}
+{#        </div>#}
+    <div class="container">
+    <br>
+{#    <div class="row">#}
+{#        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">#}
+{#            <div style="min-width: 18rem">#}
+{#                <img src="{{ product.image.url }}" alt="{{ product.name }}" width="300px" height="300px" style="object-fit: contain">#}
+{#            </div>#}
+{#    </div>#}
+{#            <div class="col-12 col-sm-12 col-md-12 col-lg-6 ">#}
+{#            <div>#}
+{#                <h1 class="my_prod_title">{{ product.name }}</h1>#}
+{#                <p>${{ product.price }}</p>#}
+{#                <p style="font-size: 20px;font-weight: bold" >Product Description</p>#}
+{#                <p>{{ product.description }}</p>#}
+{#    </div>#}
+{#            </div>#}
+{#        </div>#}
+    <p class="text-center my_search_text" style="color: white;">You have searcher for : <b style="color: red;"><strong>{{ query }}</strong></b></p>
+    {% for prod in products %}
+<div class="movie_card" id="bright" style="width: 1000px;align-items: center;height: max-content;margin: auto; justify-content: center">
+  <div class="info_section">
+    <div class="movie_header">
+      <img class="locandina" src="{{ prod.image.url }}" />
+      <h1>{{ prod.name }}</h1>
+      <h4>{{ prod.category }}</h4>
+      <p class="type">{{ prod.actors }}</p>
+    </div>
+    <div class="movie_desc">
+      <p class="text">
+        {{ prod.description }}
+      </p>
+
+      <br>
+        <a href="{{ prod.ytlink }}"><button class="button is-medium">Watch It Now</button></a>
+    <br>
+    <br>
+  </div>
+  </div>
+    </div>
+        <br>
+        {% endfor %}
+    </div>
+{% endblock %}
